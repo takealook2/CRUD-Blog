@@ -1,0 +1,33 @@
+
+ {% extends 'base.html'%}
+
+{% block content %}
+<br>
+    <h2><b>{{user.nickname}}</b></h2><h5>님의 회원정보입니다.</h5>
+    <hr>
+    <span style="font-size: 25px;">
+        <table align="center">
+            <tr>
+                <th>회원ID</th>
+                <td>{{user.username}}</td>
+            </tr>
+            <tr>
+                <th>회원 닉네임</th>
+                <td>{{user.nickname}}</td>
+            </tr>
+            <tr>
+                <th>대학교</th>
+                <td>{{user.university}}</td>
+            </tr>
+            <tr>
+                <th>사는 곳</th>
+                <td>{{user.location}}</td>
+            </tr>
+        </table>
+    </form>
+    </span>
+    <br>
+    <a href="{% url 'home' %}"><button type="button">확인</button></a>
+    
+
+{% endblock %}

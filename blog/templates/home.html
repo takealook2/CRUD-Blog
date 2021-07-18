@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% if user.is_authenticated %}
+    <br>
+    <h2><b>{{user.location}}</b>에 사는 <b>{{user.university}}</b>의 <b>{{user.nickname}}</b>님 안녕하세요!</h2>
+    {% endif %}
+    {% if not user.is_authenticated %}
+    <br>
+    <b><h2>로그인이 필요합니다.</h2></b>
+    {% endif %}
+    <a href="?search=true&writer={{user.nickname}}">내가 쓴 글</a><br>
+
+<h1>블로그 홈📬</h1>
+    <div class="container">
+    {% for blog in blogs%}
+        <div>
+        <h3>{{blog.title}}</h3>
+        {{blog.writer}}
+        {{blog.summary}} <a href="{%url 'detail' blog.id %}">...more</a>
+        <br>
+        </div>
+    {% endfor %}
+    </div>
+    <br>
+    {% if blogs.has_previous%}
+    <a href = "?page=1">처음</a>
+    <a href = "?page={{blogs.previus_page_number}}">이전</a>
+    {% endif %}
+    <span>{{blogs.number}}</span>
+    <span>of</span>
+    <span>{{blogs.paginator.num_pages}}</span>
+
+    {% if blogs.has_next %}
+    <a href = "?page={{blogs.next_page_number}}">다음</a>
+    <a href = "?page={{blogs.paginator.num_pages}}">마지막</a>
+    {% endif %}
+
+    {% endblock %}
