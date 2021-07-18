@@ -30,7 +30,6 @@ DEBUG = (os.environ.get('DEBUG','True') != 'False')
 ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'account.CustomUser'
-SITE_ID=1
 
 # Application definition
 
